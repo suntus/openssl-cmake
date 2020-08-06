@@ -4,12 +4,12 @@ stages:
     - build         # contains build and test and deploy
 
 variables:
-    OPENSSL_BUILD_VERSION: "1.1.1g"
+    OPENSSL_BUILD_VERSION: "1.1.1"
     OPENSSL_BUILD_HASH: "ddb04774f1e32f0c49751e21b67216ac87852ceb056b75209af2443400636d46"
     PREBUILT_AUTH: "$PREBUILT_USER:$PREBUILT_PASSWORD"
     ANDROID_PLATFORM: "android-23"
     ANDROID_NDK: "/android/ndk"
-    
+
 linux-x86_64:
     script:
         - mkdir build-linux-x86_64
@@ -58,7 +58,7 @@ android-arm64-v8a:
     stage: build
     only:
         - master
-        
+
 android-armeabi-v7a:
     image: viaduck/ci:android
     script:
@@ -70,7 +70,7 @@ android-armeabi-v7a:
     stage: build
     only:
         - master
-        
+
 android-i686:
     image: viaduck/ci:android
     script:
@@ -82,7 +82,7 @@ android-i686:
     stage: build
     only:
         - master
-        
+
 android-x86_64:
     image: viaduck/ci:android
     script:

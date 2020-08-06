@@ -33,7 +33,7 @@ if (NOT PREBUILT_BRANCH)
     if (${ARCH} STREQUAL "unknown")
         message(FATAL_ERROR "Architecture detection failed. Please specify manually.")
     endif()
-    
+
     if (WIN32)
         # prebuilts on windows use mingw-w64 for building
         set(ARCH_SYSTEM ${ARCH}-w64-mingw32)

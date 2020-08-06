@@ -49,7 +49,7 @@ if (SYSTEM_OPENSSL)
     add_custom_target(openssl)
 else()
     # build our own or use prebuilts
-    
+
     # set up fake targets
     add_library(ssl_lib STATIC IMPORTED GLOBAL)
     add_library(crypto_lib STATIC IMPORTED GLOBAL)
@@ -64,16 +64,16 @@ else()
         set(OPENSSL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/openssl-prefix/src/openssl)
     endif()
 
-    set(OPENSSL_LIBSSL_PATH ${OPENSSL_PREFIX}/usr/local/lib/libssl.a)
-    set(OPENSSL_LIBCRYPTO_PATH ${OPENSSL_PREFIX}/usr/local/lib/libcrypto.a)
-    
+    set(OPENSSL_LIBSSL_PATH ${OPENSSL_PREFIX}/usr/local/lib/libssl.so)
+    set(OPENSSL_LIBCRYPTO_PATH ${OPENSSL_PREFIX}/usr/local/lib/libcrypto.so)
+
     # set up openssl target
     if (BUILD_OPENSSL)
         include(BuildOpenSSL)
     else()
         include(PrebuiltOpenSSL)
     endif()
-    
+
     # set import locations
     set_target_properties(ssl_lib PROPERTIES IMPORTED_LOCATION ${OPENSSL_LIBSSL_PATH})
     set_target_properties(crypto_lib PROPERTIES IMPORTED_LOCATION ${OPENSSL_LIBCRYPTO_PATH})

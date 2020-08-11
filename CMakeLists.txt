@@ -51,8 +51,9 @@ else()
     # build our own or use prebuilts
 
     # set up fake targets
-    add_library(ssl_lib STATIC IMPORTED GLOBAL)
-    add_library(crypto_lib STATIC IMPORTED GLOBAL)
+    # 不是cmake构建的目标
+    add_library(ssl_lib SHARED  IMPORTED GLOBAL)
+    add_library(crypto_lib SHARED  IMPORTED GLOBAL)
 
     target_link_libraries(ssl INTERFACE ssl_lib)
     target_link_libraries(crypto INTERFACE crypto_lib)
